@@ -26,7 +26,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         tags: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}
-        file: ansible2go/Dockerfile
+        file: Dockerfile
     
     - name: Login to dockerhub
       uses: docker/login-action@v1
@@ -39,5 +39,5 @@ jobs:
       with:
         push: true
         tags: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}
-        file: ansible2go/Dockerfile
+        file: Dockerfile
       
