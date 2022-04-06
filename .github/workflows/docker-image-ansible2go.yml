@@ -40,4 +40,11 @@ jobs:
         push: true
         tags: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}
         file: Dockerfile
+        
+    - name: Push image
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: devopsteamsdb/devopsteamsdb:ansible2go_latest
+        file: Dockerfile
       
