@@ -2,9 +2,10 @@ FROM ubuntu:20.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y vim wget curl jq git gnupg2 python3-pip sshpass openssh-client && \
-    DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common libgdiplus libc6-dev && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get clean
+    DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get install -y --no-install-recommends libgdiplus libc6-dev
 
 RUN python3 -m pip install --upgrade pip cffi && \
     pip install ansible-core ansible && \
@@ -38,6 +39,10 @@ RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod
     apt-get clean
 
 RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserverdsc,sharepointdsc,cisco.imc,cisco.ucs.core,jenkins,polaris,pswindowsupdate,powershell-yaml -AcceptLicense -Force
+
+RUN pwsh -c Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip $false -Confirm:$false | Out-Null
+
+RUN apt-get clean
 
 WORKDIR /ansible
 
