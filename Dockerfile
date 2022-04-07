@@ -58,7 +58,7 @@ RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod
 RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserverdsc,sharepointdsc,cisco.imc,cisco.ucs.core,jenkins,polaris,pswindowsupdate,powershell-yaml -AcceptLicense -Force
 
 # Ignore powercli warning
-RUN pwsh -c Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip $false -Confirm:$false | Out-Null
+RUN pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip $false -Confirm:$false"
 
 RUN apt-get clean
 
