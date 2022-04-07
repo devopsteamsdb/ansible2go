@@ -5,7 +5,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common && \
     rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y --no-install-recommends libgdiplus libc6-dev
+RUN apt-get update && apt-get install -y --no-install-recommends libgdiplus libc6-dev
 
 RUN python3 -m pip install --upgrade pip cffi && \
     pip install ansible-core ansible && \
