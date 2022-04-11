@@ -48,3 +48,11 @@ jobs:
         tags: devopsteamsdb/devopsteamsdb:ansible2go_latest
         file: Dockerfile
       
+    - name: Send Email With SendGrid
+      uses: licenseware/send-email-notification@v1
+      with:
+        from-email: devops.team.sdb@gmail.com
+        to-email: ${{ secrets.SENDGRID_TO }}
+        api-key: ${{ secrets.SENDGRID_TOKEN }}
+        subject: Docker build Completed
+        markdown-body: "Docker tag: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}"
