@@ -30,7 +30,7 @@ RUN python3 -m pip install --upgrade pip cffi && \
 
 RUN mkdir /ansible && \
     mkdir -p /etc/ansible && \
-    echo 'localhost' > /etc/ansible/hosts
+    echo 'localhost ansible_connection=local' > /etc/ansible/hosts
 
 # Ansible Collections
 RUN ansible-galaxy collection install ansible.netcommon && \
