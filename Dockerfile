@@ -2,8 +2,7 @@ FROM ubuntu:20.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y vim wget curl jq git gnupg2 python3-pip sshpass openssh-client && \
-    DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common && \
-    rm -rf /var/lib/apt/lists/*
+    DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common
 
 RUN python3 -m pip install --upgrade pip cffi && \
     pip install ansible-core ansible && \
@@ -32,15 +31,14 @@ RUN ansible-galaxy collection install ansible.netcommon && \
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb && \
     dpkg -i packages-microsoft-prod.deb && \
     apt-get update && \
-    apt-get install -y powershell && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get clean
+    apt-get install -y powershell
 
-RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserverdsc,cisco.imc,cisco.ucs.core,jenkins -AcceptLicense -Force
+RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserverdsc,cisco.imc,cisco.ucs.core,jenkins,pswindowsupdate -AcceptLicense -Force
 
 RUN pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip 0 -Confirm:0"
 
-RUN apt-get clean
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /ansible
 
