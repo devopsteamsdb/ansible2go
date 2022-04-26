@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping telnet && \
     DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common expect
 
 RUN python3 -m pip install --upgrade pip cffi && \
