@@ -1,14 +1,15 @@
-FROM ubuntu:20.04
+#FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y vim wget curl jq git gnupg2 python3-pip sshpass openssh-client && \
-    DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common
+    DEBIAN_FRONTEND=noninteractive apt-get install -y vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping && \
+    DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common expect
 
 RUN python3 -m pip install --upgrade pip cffi && \
     pip install ansible-core ansible && \
     pip install mitogen ansible-lint jmespath netapp-lib && \
     pip install --upgrade pywinrm && \
-    pip install pywinrm[kerberos] requests-kerberos pyvmomi docker && \
+    pip install pywinrm[kerberos] requests-kerberos pyvmomi docker pexpect && \
     rm -rf /root/.cache/pip
 
 RUN mkdir /ansible && \
