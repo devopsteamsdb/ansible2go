@@ -37,7 +37,7 @@ RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserve
 RUN pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip 0 -Confirm:0"
 
 # Install Openshift linux client
-RUN curl -fsSL https://raw.githubusercontent.com/cptmorgan-rh/install-oc-tools/master/install-oc-tools.sh -o install-oc-tools.sh  && chmod +x install-oc-tools.sh && ./install-oc-tools.sh --stable 4.10
+RUN curl -fsSL https://raw.githubusercontent.com/cptmorgan-rh/install-oc-tools/master/install-oc-tools.sh -o install-oc-tools.sh  && chmod +x install-oc-tools.sh && ./install-oc-tools.sh --stable 4.10.5
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
