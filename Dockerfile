@@ -8,7 +8,7 @@ RUN python3 -m pip install --upgrade pip cffi && \
     pip install ansible-core ansible && \
     pip install mitogen ansible-lint jmespath netapp-lib && \
     pip install --upgrade pywinrm && \
-    pip install pywinrm[kerberos] requests-kerberos pyvmomi docker pexpect kubernetes openshift && \
+    pip install pywinrm[kerberos] requests-kerberos pyvmomi pexpect kubernetes openshift docker docker-compose && \
     rm -rf /root/.cache/pip
 
 RUN mkdir /ansible && \
