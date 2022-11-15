@@ -36,7 +36,7 @@ RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod
 RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserverdsc,cisco.imc,cisco.ucs.core,jenkins,pswindowsupdate,pester -AcceptLicense -Force
 RUN pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip 0 -Confirm:0"
 
-# Install Openshift linux client
+# Install Openshift linux client 
 RUN curl -fsSL https://raw.githubusercontent.com/cptmorgan-rh/install-oc-tools/master/install-oc-tools.sh -o install-oc-tools.sh  && chmod +x install-oc-tools.sh && ./install-oc-tools.sh --version 4.10.5
 
 RUN apt-get clean && \
