@@ -28,7 +28,7 @@ RUN ansible-galaxy collection install ansible.netcommon && \
     ansible-galaxy collection install check_point.mgmt && \
     ansible-galaxy collection install netapp.ontap
 
-# Install Powershell  7 and modules
+## Install Powershell  7 and modules
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb && \
     dpkg -i packages-microsoft-prod.deb && \
     apt-get update && \
