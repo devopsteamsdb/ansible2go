@@ -11,7 +11,7 @@ RUN python3 -m pip install --upgrade pip cffi && \
     pip install pywinrm[kerberos] requests-kerberos pyvmomi pexpect kubernetes openshift docker docker-compose && \
     rm -rf /root/.cache/pip
     
-RUN python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
+#RUN python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
 
 RUN mkdir /ansible && \
     mkdir -p /etc/ansible && \
