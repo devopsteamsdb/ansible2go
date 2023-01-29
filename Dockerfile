@@ -4,14 +4,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping telnet && \
     DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user krb5-user libkrb5-dev gcc python-dev cifs-utils nfs-common expect
 
+RUN python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
+
 RUN python3 -m pip install --upgrade pip cffi && \
     pip install ansible-core ansible && \
     pip install mitogen ansible-lint jmespath netapp-lib && \
     pip install --upgrade pywinrm && \
     pip install pywinrm[kerberos] requests-kerberos pyvmomi pexpect kubernetes openshift docker docker-compose && \
     rm -rf /root/.cache/pip
-    
-#RUN python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
 
 RUN mkdir /ansible && \
     mkdir -p /etc/ansible && \
