@@ -15,8 +15,7 @@ ansible-playbook --version
 
 ```bash
 docker run --rm -it -v $(pwd):/ansible -v ~/.ssh/id_rsa:/root/.ssh/id_rsa --workdir=/ansible devopsteamsdb/devopsteamsdb:ansible2go_latest bash
-``
-
+```
 
 via https://labs.play-with-docker.com
 
