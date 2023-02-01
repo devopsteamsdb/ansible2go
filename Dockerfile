@@ -1,8 +1,8 @@
 FROM ubuntu:22.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -yq vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping telnet && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -yq krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -yq vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping telnet && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -yq krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
@@ -37,7 +37,7 @@ RUN ansible-galaxy collection install ansible.netcommon && \
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb && \
     dpkg -i packages-microsoft-prod.deb && \
     apt-get update && \
-    apt-get install --no-install-recommends -y powershell && \
+    apt-get install -y powershell && \
     rm -rf /packages-microsoft-prod.deb && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
