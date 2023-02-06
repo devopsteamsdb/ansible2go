@@ -24,19 +24,8 @@ RUN mkdir /ansible && \
     mkdir -p /etc/ansible && \
     echo 'localhost ansible_connection=local' > /etc/ansible/hosts
 
-RUN ansible-galaxy collection install ansible.netcommon && \
-    ansible-galaxy collection install ansible.utils && \
-    ansible-galaxy collection install ansible.windows && \
-    ansible-galaxy collection install cisco.aci && \
-    ansible-galaxy collection install cisco.ios && \
-    ansible-galaxy collection install community.crypto && \
-    ansible-galaxy collection install community.docker && \
-    ansible-galaxy collection install community.general && \
-    ansible-galaxy collection install community.vmware && \
-    ansible-galaxy collection install community.windows && \
-    ansible-galaxy collection install check_point.mgmt && \
-    ansible-galaxy collection install netapp.ontap && \ 
-    ansible-galaxy collection install netbox.netbox
+COPY ./requirements.yml /ansible/requirements.yml
+RUN ansible-galaxy install -r requirements.yml
 
 # Install Powershell  7 and modules
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb && \
