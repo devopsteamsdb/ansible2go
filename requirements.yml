@@ -1,0 +1,14 @@
+# Install a role from the Ansible Galaxy
+- src: ansible.netcommon
+- src: ansible.utils
+- src: ansible.windows
+- src: cisco.aci
+- src: cisco.ios
+- src: community.crypto
+- src: community.docker
+- src: community.general
+- src: community.vmware
+- src: community.windows
+- src: check_point.mgmt
+- src: netapp.ontap 
+- src: netbox.netbox
