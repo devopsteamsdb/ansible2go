@@ -25,7 +25,7 @@ RUN mkdir /ansible && \
     echo 'localhost ansible_connection=local' > /etc/ansible/hosts
 
 COPY ./requirements.yml /ansible/requirements.yml
-RUN ansible-galaxy install -r requirements.yml
+RUN ansible-galaxy install -r /ansible/requirements.yml
 
 # Install Powershell  7 and modules
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb && \
