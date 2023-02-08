@@ -61,3 +61,30 @@ jobs:
         api-key: ${{ secrets.SENDGRID_TOKEN }}
         subject: Docker build Completed
         markdown-body: "Docker tag: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}"
+        
+    - name: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}
+      run: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }} > ansible2go_${{ steps.date.outputs.date }}.tar
+      
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ github.run_number }}
+        release_name: Release ${{ github.run_number }}
+        body_path: ansible2go_${{ steps.date.outputs.date }}.tar
+        
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: .\ansible2go_${{ steps.date.outputs.date }}.tar
+        asset_name: ansible2go_${{ steps.date.outputs.date }}.tar
+        asset_content_type: application/tar
+
+ 
+      
