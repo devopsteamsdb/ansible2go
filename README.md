@@ -1,5 +1,8 @@
 # ansible2go
 
+[![Docker Image CI](https://github.com/devopsteamsdb/ansible2go/actions/workflows/docker-image.yml/badge.svg)](https://github.com/devopsteamsdb/ansible2go/actions/workflows/docker-image.yml)
+
+
 🛠 test the docker image using ansible-playbook:
 
 ```bash
