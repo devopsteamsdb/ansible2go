@@ -63,7 +63,7 @@ jobs:
         markdown-body: "Docker tag: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}"
         
     - name: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}
-      run: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }} > ansible2go_${{ steps.date.outputs.date }}.tar
+      run: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }} > ansible2go_${{ github.run_number }}.tar
       
     - name: Create Release
       id: create_release
