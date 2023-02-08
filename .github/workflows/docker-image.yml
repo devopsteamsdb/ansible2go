@@ -62,8 +62,11 @@ jobs:
         subject: Docker build Completed
         markdown-body: "Docker tag: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}"
         
-    - name: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}
+    - name: docker save ansible2go_${{ github.run_number }}
       run: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }} > ansible2go_${{ github.run_number }}.tar
+    
+    - name: get size of file
+      run: ls -lah 
       
     - name: Create Release
       id: create_release
