@@ -71,7 +71,7 @@ jobs:
     - uses: xresloader/upload-to-github-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
         draft: false
         release_name: Ansible2Go Release ${{ github.run_number }}
-      with:
         file: ansible2go_${{ steps.date.outputs.date }}.gz
