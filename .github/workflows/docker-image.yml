@@ -68,6 +68,8 @@ jobs:
     - name: get size of file
       run: ls -lah 
       
-    - uses: ncipollo/release-action@v1
+    - uses: xresloader/upload-to-github-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        artifacts: ansible2go_${{ github.run_number }}.zip
+        file: "ansible2go_${{ github.run_number }}.zip"
