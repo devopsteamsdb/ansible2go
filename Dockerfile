@@ -20,9 +20,9 @@ RUN python3 -m pip install --upgrade pip cffi && \
     pip install pywinrm[kerberos] requests-kerberos pyvmomi pexpect kubernetes openshift docker docker-compose ansible-parallel && \
     rm -rf /root/.cache/pip
 
-#RUN mkdir /ansible && \
-#    mkdir -p /etc/ansible && \
-#    echo 'localhost ansible_connection=local' > /etc/ansible/hosts
+RUN mkdir /ansible && \
+    mkdir -p /etc/ansible && \
+    echo 'localhost ansible_connection=local' > /etc/ansible/hosts
 
 COPY ./requirements.yml /ansible/requirements.yml
 RUN ansible-galaxy install -r /ansible/requirements.yml
@@ -36,9 +36,9 @@ RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-#RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserverdsc,cisco.imc,cisco.ucs.core,jenkins,pswindowsupdate,pester -AcceptLicense -Force
+RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserverdsc,cisco.imc,cisco.ucs.core,jenkins,pswindowsupdate,pester -AcceptLicense -Force
 
-#RUN pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip 0 -Confirm:0"
+RUN pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip 0 -Confirm:0"
 
 # Install Openshift linux client 
 # RUN curl -fsSL https://raw.githubusercontent.com/cptmorgan-rh/install-oc-tools/master/install-oc-tools.sh -o install-oc-tools.sh  && \
