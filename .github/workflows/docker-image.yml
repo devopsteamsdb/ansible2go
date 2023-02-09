@@ -63,7 +63,7 @@ jobs:
         markdown-body: "Docker tag: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}"
         
     - name: docker save ansible2go_${{ github.run_number }}
-      run: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }} | gzip > ansible2go_${{ github.run_number }}.zip
+      run: docker save devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }} | gzip > ansible2go_${{ steps.date.outputs.date }}.gz
     
     - name: get size of file
       run: ls -lah 
@@ -71,5 +71,7 @@ jobs:
     - uses: xresloader/upload-to-github-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        draft: false
+        release_name: Ansible2Go Release ${{ github.run_number }}
       with:
-        file: "ansible2go_${{ github.run_number }}.zip"
+        file: ansible2go_${{ steps.date.outputs.date }}.gz
