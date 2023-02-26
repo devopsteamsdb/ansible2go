@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-# AIM
+# AIM PLUGIN
 # COPY ./CARKaim-12.01.0.50.amd64.deb /
 # RUN dpkg -i /CARKaim-12.01.0.50.amd64.deb
 
