@@ -14,4 +14,5 @@ collections:
   - name: netapp.ontap 
   - name: netbox.netbox
   - name: containers.podman
+  - name: dellemc.openmanage
  
