@@ -50,6 +50,7 @@ WORKDIR /ansible
 
 RUN mkdir -p /etc/ansible && \   
     pip list && \
-    ansible-playbook --version
+    ansible-playbook --version && \
+    pwsh -c Get-Module -ListAvailable
 
 CMD [ "ansible-playbook", "--version" ]
