@@ -10,10 +10,10 @@ collections:
   - name: community.general
   - name: community.vmware
   - name: community.windows
-  - name: Community.Docker
+  - name: community.Docker
   - name: check_point.mgmt
   - name: netapp.ontap 
   - name: netbox.netbox
   - name: containers.podman
   - name: dellemc.openmanage
-  - name: Vmware.Vmware_Rest
+  - name: vmware.Vmware_Rest
