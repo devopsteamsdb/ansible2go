@@ -15,4 +15,4 @@ collections:
   - name: netbox.netbox
   - name: containers.podman
   - name: dellemc.openmanage
- 
+  - name: Vmware.Vmware_Rest
