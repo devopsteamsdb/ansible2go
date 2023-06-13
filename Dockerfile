@@ -6,5 +6,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
     
-RUN python3 -m pip install --upgrade setuptools==62.0.0 && \
+RUN rm -rf /usr/lib/python3.x/EXTERNALLY-MANAGED && \ 
+    python3 -m pip install --upgrade setuptools==62.0.0 && \
     python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
