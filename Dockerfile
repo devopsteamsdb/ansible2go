@@ -9,3 +9,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 RUN rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED && \
     python3 -m pip install --upgrade setuptools==62.0.0 && \
     python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
+
+RUN python3 -m pip install --upgrade pip cffi && \
+    pip install ansible-core ansible && \
+    pip install mitogen ansible-lint jmespath netapp-lib && \
+    pip install --upgrade pywinrm && \
+    pip install pywinrm[kerberos] requests-kerberos pyvmomi pexpect kubernetes openshift docker docker-compose ansible-parallel && \
+    rm -rf /root/.cache/pip
