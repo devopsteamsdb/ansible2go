@@ -1,8 +1,4 @@
-FROM ubuntu:22.04
-
-## AIM PLUGIN
-# COPY ./CARKaim-12.01.0.50.amd64.deb /
-# RUN dpkg -i /CARKaim-12.01.0.50.amd64.deb
+FROM ubuntu:23.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping telnet && \
@@ -40,16 +36,9 @@ RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserve
 
 RUN pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip 0 -Confirm:0"
 
-# Install Openshift linux client 
-# RUN curl -fsSL https://raw.githubusercontent.com/cptmorgan-rh/install-oc-tools/master/install-oc-tools.sh -o install-oc-tools.sh  && \
-#    chmod +x install-oc-tools.sh && \
-#    ./install-oc-tools.sh --version 4.10.5 && \
-#    rm -rf /install-oc-tools.sh
-
 WORKDIR /ansible
 
-RUN mkdir -p /etc/ansible && \   
-    pip list && \
+RUN pip list && \
     ansible-playbook --version && \
     pwsh -c Get-Module -ListAvailable
 
