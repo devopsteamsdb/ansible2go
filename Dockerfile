@@ -5,3 +5,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
+    
+RUN python3 -m pip install --upgrade setuptools==62.0.0 && \
+    python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
