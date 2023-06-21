@@ -15,7 +15,7 @@ RUN python3 -m pip install --upgrade pip cffi && \
     pip install mitogen ansible-lint jmespath netapp-lib && \
     pip install --upgrade pywinrm && \
     pip install pywinrm[kerberos] requests-kerberos pyvmomi pexpect kubernetes openshift docker docker-compose ansible-parallel && \
-    pip install 'pyspnego >= 0.8.0' sansldap dnspython 'pyspnego[kerberos] >= 0.8.0' krb5-devel krb5-libs python3-devel && \
+    pip install 'pyspnego >= 0.8.0' sansldap dnspython 'pyspnego[kerberos] >= 0.8.0' gcc python3-devel krb5-libs krb5-devel && \
     rm -rf /root/.cache/pip
 
 RUN mkdir /ansible && \
