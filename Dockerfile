@@ -2,7 +2,7 @@ FROM ubuntu:23.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping telnet && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -yq krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect pipx python3-devel krb5-libs krb5-devel && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -yq krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect pipx && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
     
@@ -15,7 +15,6 @@ RUN python3 -m pip install --upgrade pip cffi && \
     pip install mitogen ansible-lint jmespath netapp-lib && \
     pip install --upgrade pywinrm && \
     pip install pywinrm[kerberos] requests-kerberos pyvmomi pexpect kubernetes openshift docker docker-compose ansible-parallel && \
-    pip install 'pyspnego >= 0.8.0' sansldap dnspython 'pyspnego[kerberos] >= 0.8.0' && \
     rm -rf /root/.cache/pip
 
 RUN mkdir /ansible && \
