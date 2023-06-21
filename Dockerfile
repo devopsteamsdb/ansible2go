@@ -2,7 +2,7 @@ FROM ubuntu:23.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping telnet && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -yq krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect pipx 'pyspnego >= 0.8.0' sansldap dnspython 'pyspnego[kerberos] >= 0.8.0' krb5-devel krb5-libs python3-devel  && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -yq krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect pipx pyspnego sansldap dnspython pyspnego[kerberos] krb5-devel krb5-libs python3-devel && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
     
