@@ -7,8 +7,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get clean
     
 RUN rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED && \
-    python3 -m pip install --upgrade setuptools==62.0.0 && \
+    python3 -m pip install --upgrade setuptools && \
     python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
+#==62.0.0
 
 RUN python3 -m pip install --upgrade pip cffi && \
     pip install ansible-core ansible && \
