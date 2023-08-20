@@ -5,18 +5,21 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect pipx && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
-    
+  
 RUN rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED && \
-    python3 -m pip install --upgrade setuptools && \
-    python3 -m pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
-#==62.0.0
-
-RUN python3 -m pip install --upgrade pip cffi && \
+    python3 -m pip install --upgrade pip cffi && \
     pip install ansible-core ansible && \
     pip install mitogen ansible-lint jmespath netapp-lib && \
     pip install --upgrade pywinrm && \
-    pip install pywinrm[kerberos] requests-kerberos pyvmomi pexpect kubernetes openshift docker docker-compose ansible-parallel && \
+    pip install pywinrm[kerberos] requests-kerberos && \
     rm -rf /root/.cache/pip
+
+RUN pip install --upgrade setuptools
+RUN pip install PyYAML==5.3.1
+RUN pip install pyvmomi pexpect openshift ansible-parallel docker kubernetes
+RUN pip install docker-compose --no-dependencies
+
+RUN pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
 
 RUN mkdir /ansible && \
     mkdir -p /etc/ansible && \
@@ -42,6 +45,7 @@ WORKDIR /ansible
 
 RUN pip list && \
     ansible-playbook --version && \
+    ansible-galaxy collection list && \
     pwsh -c Get-Module -ListAvailable
 
 CMD [ "ansible-playbook", "--version" ]
