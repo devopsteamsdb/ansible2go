@@ -60,6 +60,7 @@ jobs:
       id: ansible
       run: |
         $LatesVersion = docker run devopsteamsdb/devopsteamsdb:ansible2go_latest pip list | grep ansible-core | awk '{print $2}'
+        echo "::set-output name=LatesVersion::$($LatesVersion)"
         echo "LatesVersion=$($LatesVersion)" >> $env:GITHUB_ENV
 
     - name: Send Email With SendGrid
