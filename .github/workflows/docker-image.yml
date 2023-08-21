@@ -35,6 +35,10 @@ jobs:
         tags: devopsteamsdb/devopsteamsdb:ansible2go_${{ steps.date.outputs.date }}
         file: Dockerfile
     
+    - name: Get Ansible version
+      id: ansible_version
+      run: echo "::set-output name=ansible_version::$(docker run devopsteamsdb/devopsteamsdb:ansible2go_latest pip list | grep ansible-core | awk '{print $2}')"
+
     - name: Login to dockerhub
       uses: docker/login-action@v1
       with:
