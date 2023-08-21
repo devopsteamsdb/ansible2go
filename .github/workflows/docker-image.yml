@@ -84,6 +84,7 @@ jobs:
         release_name: Release ansible2go_${{ steps.date.outputs.date }}
         body: |
           Release jenkins2go_${{ steps.date.outputs.date }}
+          Ansible Version: {{ steps.ansible_version.outputs.ansible_version }}
       
     - uses: xresloader/upload-to-github-release@v1
       env:
