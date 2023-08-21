@@ -37,7 +37,10 @@ RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN pwsh -c install-module vmware.powercli,importexcel,pscribo,dbatools,sqlserverdsc,cisco.imc,cisco.ucs.core,jenkins,pswindowsupdate,pester -AcceptLicense -Force
+COPY ./powershell_modules.txt /ansible/powershell_modules.txt
+COPY ./powershell_install_modules.ps1 /ansible/powershell_install_modules.ps1
+
+RUN pwsh -File "/ansible/powershell_install_modules.ps1"
 
 RUN pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -ParticipateInCeip 0 -Confirm:0"
 

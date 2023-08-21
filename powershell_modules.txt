@@ -1,0 +1,11 @@
+vmware.powercli
+importexcel
+pscribo
+dbatools
+sqlserverdsc
+cisco.imc
+cisco.ucs.core
+jenkins
+pswindowsupdate
+pester 
+psCheckPoint
