@@ -63,6 +63,14 @@ jobs:
         $LatesVersion = docker run devopsteamsdb/devopsteamsdb:ansible2go_latest pip list | grep ansible-core | awk '{print $2}'
         echo "::set-output name=LatesVersion::$($LatesVersion)"
         echo "LatesVersion=$($LatesVersion)" >> $env:GITHUB_ENV
+    
+    - name: Powershell Version
+      shell: pwsh
+      id: pwsh
+      run: |
+        $LatesVersion = docker run devopsteamsdb/devopsteamsdb:ansible2go_latest pwsh -version | awk '{print $2}'
+        echo "::set-output name=LatesVersion::$($LatesVersion)"
+        echo "LatesVersion=$($LatesVersion)" >> $env:GITHUB_ENV
 
     - name: Send Email With SendGrid
       uses: licenseware/send-email-notification@v1
@@ -90,6 +98,7 @@ jobs:
         body: |
           Release: ansible2go_${{ steps.date.outputs.date }}
           Ansible Version: ${{ steps.ansible.outputs.LatesVersion }}
+          Powershell Version: ${{ steps.pwsh.outputs.LatesVersion }}
       
     - uses: xresloader/upload-to-github-release@v1
       env:
