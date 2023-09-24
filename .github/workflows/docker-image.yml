@@ -79,6 +79,14 @@ jobs:
         $LatesVersion = docker run devopsteamsdb/devopsteamsdb:ansible2go_latest pwsh -Command "(Get-module -name Vmware.PowerCli -ListAvailable | Select-Object -ExpandProperty Version).ToString()"
         echo "::set-output name=LatesVersion::$($LatesVersion)"
         echo "LatesVersion=$($LatesVersion)" >> $env:GITHUB_ENV
+    
+    - name: Python Version
+      shell: pwsh
+      id: python
+      run: |
+        $LatesVersion = docker run devopsteamsdb/devopsteamsdb:ansible2go_latest python3 --version | awk '{print $2}'
+        echo "::set-output name=LatesVersion::$($LatesVersion)"
+        echo "LatesVersion=$($LatesVersion)" >> $env:GITHUB_ENV
         
     - name: Send Email With SendGrid
       uses: licenseware/send-email-notification@v1
@@ -108,6 +116,7 @@ jobs:
           Ansible Version: ${{ steps.ansible.outputs.LatesVersion }}
           Powershell Version: ${{ steps.pwsh.outputs.LatesVersion }}
           PowerCli Version: ${{ steps.powercli.outputs.LatesVersion }}
+          Python Version: ${{ steps.python.outputs.LatesVersion }}
       
     - uses: xresloader/upload-to-github-release@v1
       env:
