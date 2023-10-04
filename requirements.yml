@@ -17,3 +17,4 @@ collections:
   - name: containers.podman
   - name: dellemc.openmanage
   - name: vmware.vmware_rest
+  - name: lowlydba.sqlserver
