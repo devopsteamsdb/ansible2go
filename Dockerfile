@@ -1,4 +1,4 @@
-FROM ubuntu:23.04
+FROM ubuntu:mantic-20231011
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq vim wget curl jq git gnupg2 python3-pip sshpass openssh-client iputils-ping telnet && \
