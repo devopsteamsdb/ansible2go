@@ -10,7 +10,6 @@ collections:
   - name: community.crypto
   - name: community.docker
   - name: community.general
-  - name: Community.Postgresql
   - name: community.vmware
   - name: community.windows
   - name: containers.podman
