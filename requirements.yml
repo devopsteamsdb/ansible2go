@@ -1,6 +1,5 @@
 # Install a role from the Ansible Galaxy
 collections:
-  - name: ansible.builtin
   - name: ansible.netcommon
   - name: ansible.posix
   - name: ansible.utils
