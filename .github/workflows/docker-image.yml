@@ -56,11 +56,19 @@ jobs:
         tags: devopsteamsdb/devopsteamsdb:ansible2go_latest
         file: Dockerfile
     
+    - name: Ansible-core version
+      shell: pwsh
+      id: ansiblecore
+      run: |
+        $LatesVersion = docker run devopsteamsdb/devopsteamsdb:ansible2go_latest pip list | grep ansible-core | awk '{print $2}'
+        echo "::set-output name=LatesVersion::$($LatesVersion)"
+        echo "LatesVersion=$($LatesVersion)" >> $env:GITHUB_ENV
+
     - name: Ansible version
       shell: pwsh
       id: ansible
       run: |
-        $LatesVersion = docker run devopsteamsdb/devopsteamsdb:ansible2go_latest pip list | grep ansible-core | awk '{print $2}'
+        $LatesVersion = docker run devopsteamsdb/devopsteamsdb:ansible2go_latest pip list | grep -v - | grep ansible | awk '{print $2}'
         echo "::set-output name=LatesVersion::$($LatesVersion)"
         echo "LatesVersion=$($LatesVersion)" >> $env:GITHUB_ENV
     
@@ -113,6 +121,7 @@ jobs:
         release_name: Release ansible2go_${{ steps.date.outputs.date }}
         body: |
           Release: ansible2go_${{ steps.date.outputs.date }}
+          Ansible Core Version: ${{ steps.ansiblecore.outputs.LatesVersion }}
           Ansible Version: ${{ steps.ansible.outputs.LatesVersion }}
           Powershell Version: ${{ steps.pwsh.outputs.LatesVersion }}
           PowerCli Version: ${{ steps.powercli.outputs.LatesVersion }}
