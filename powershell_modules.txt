@@ -9,3 +9,5 @@ jenkins
 pswindowsupdate
 pester
 psCheckPoint
+VMware.vSphere.SsoAdmin
+psPAS
