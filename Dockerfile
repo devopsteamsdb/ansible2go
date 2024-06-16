@@ -8,7 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
   
 RUN rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED && \
     python3 -m pip install --upgrade pip cffi && \
-    pip install ansible-core<2.17 ansible && \
+    pip install ansible-core==2.16 ansible && \
     pip install mitogen ansible-lint jmespath netapp-lib && \
     pip install --upgrade pywinrm && \
     pip install pywinrm[kerberos] requests-kerberos && \
