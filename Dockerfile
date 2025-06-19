@@ -18,6 +18,7 @@ RUN pip install --upgrade setuptools
 RUN pip install PyYAML==5.3.1
 RUN pip install pyvmomi pexpect openshift ansible-parallel docker kubernetes
 RUN pip install docker-compose --no-dependencies
+RUN pip install vmware-vcenter vmware-vapi-common-client aiohttp
 
 RUN pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
 
