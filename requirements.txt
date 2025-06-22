@@ -1,0 +1,14 @@
+ansible-lint 
+ansible-parallel
+docker
+gssapi
+jmespath 
+kubernetes
+mitogen 
+netapp-lib
+openshift
+pexpect
+pyvmomi
+pywinrm
+pywinrm[kerberos]
+requests-kerberos
