@@ -17,16 +17,16 @@ collections:
   - name: dellemc.openmanage
   - name: f5networks.f5_modules
   - name: fortinet.console
+  - name: fortinet.fortimanager
   - name: fortinet.fortios
   - name: fortinet.fortiswitch
   - name: fortinet.fortiweb
-  - name: fortinet.fortimanager
   - name: junipernetworks.junos
-  - name: aicrosoft.ad
+  - name: kubernetes.core
+  - name: lowlydba.sqlserver
+  - name: microsoft.ad
   - name: netapp.ontap
   - name: netbox.netbox
   - name: paloaltonetworks.panos
-  - name: vmware.vmware_rest
-  - name: lowlydba.sqlserver
-  - name: kubernetes.core
   - name: vmware.vmware
+  - name: vmware.vmware_rest
