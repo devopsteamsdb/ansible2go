@@ -1,4 +1,4 @@
-FROM python:3.13.5-slim
+FROM python:3-slim
 RUN apt-get update
 
 RUN apt-get install -yq vim wget curl jq git gnupg2 python3-pip python3-dnf sshpass openssh-client iputils-ping telnet krb5-user krb5-user libkrb5-dev gcc cifs-utils nfs-common expect pipx && \
