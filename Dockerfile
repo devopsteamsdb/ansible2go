@@ -23,11 +23,14 @@ RUN ansible-galaxy install -r /ansible/requirements.yml && \
 rm -rf /ansible/requirements.yml
 
 # Install Powershell 7 and modules.
-RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb && \
+RUN apt-get update && \
+    apt-get install -y wget apt-transport-https ca-certificates && \
+    . /etc/os-release && \
+    wget -q "https://packages.microsoft.com/config/${ID}/${VERSION_ID}/packages-microsoft-prod.deb" && \
     dpkg -i packages-microsoft-prod.deb && \
     apt-get update && \
     apt-get install -y powershell && \
-    rm -rf /packages-microsoft-prod.deb && \
+    rm -f packages-microsoft-prod.deb && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
